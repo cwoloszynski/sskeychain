@@ -46,38 +46,17 @@ typedef enum {
 } SSKeychainErrorCode;
 
 extern NSString *const kSSKeychainErrorDomain;
-
-/** Account name. */
 extern NSString *const kSSKeychainAccountKey;
-
-/**
- Time the item was created.
- 
- The value will be a string.
- */
 extern NSString *const kSSKeychainCreatedAtKey;
-
-/** Item class. */
 extern NSString *const kSSKeychainClassKey;
-
-/** Item description. */
 extern NSString *const kSSKeychainDescriptionKey;
-
-/** Item label. */
 extern NSString *const kSSKeychainLabelKey;
-
-/** Time the item was last modified.
- 
- The value will be a string.
- */
 extern NSString *const kSSKeychainLastModifiedKey;
-
-/** Where the item was created. */
 extern NSString *const kSSKeychainWhereKey;
 
 /**
- Simple wrapper for accessing accounts, getting passwords, setting passwords, and deleting passwords using the system
- Keychain on Mac OS X and iOS.
+ Simple wrapper for accessing accounts, getting passwords, setting passwords, and deleting passwords 
+ using the system Keychain on Mac OS X and iOS.
  
  This was originally inspired by EMKeychain and SDKeychain (both of which are now gone). Thanks to the authors.
  SSKeychain has since switched to a simpler implementation that was abstracted from [SSToolkit](http://sstoolk.it).

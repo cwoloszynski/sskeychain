@@ -6,14 +6,14 @@
 //  Copyright (c) 2011 Sam Soffes. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import "SSKeychain.h"
 
 static NSString *kSSToolkitTestsServiceName = @"SSToolkitTestService";
 static NSString *kSSToolkitTestsAccountName = @"SSToolkitTestAccount";
 static NSString *kSSToolkitTestsPassword = @"SSToolkitTestPassword";
 
-@interface SSKeychainTests : SenTestCase
+@interface SSKeychainTests : XCTestCase
 
 - (BOOL)_accounts:(NSArray *)accounts containsAccountWithName:(NSString *)name;
 
@@ -25,19 +25,19 @@ static NSString *kSSToolkitTestsPassword = @"SSToolkitTestPassword";
 	// Getting & Setings Passwords
 	[SSKeychain setPassword:kSSToolkitTestsPassword forService:kSSToolkitTestsServiceName account:kSSToolkitTestsAccountName];
 	NSString *password = [SSKeychain passwordForService:kSSToolkitTestsServiceName account:kSSToolkitTestsAccountName];
-	STAssertEqualObjects(password, kSSToolkitTestsPassword, @"Password reads and writes");
+	XCTAssertEqualObjects(password, kSSToolkitTestsPassword, @"Password reads and writes");
 	
 	// Getting Accounts
 	NSArray *accounts = [SSKeychain allAccounts];
-	STAssertTrue([self _accounts:accounts containsAccountWithName:kSSToolkitTestsAccountName], @"All accounts");
+	XCTAssertTrue([self _accounts:accounts containsAccountWithName:kSSToolkitTestsAccountName], @"All accounts");
 
 	accounts = [SSKeychain accountsForService:kSSToolkitTestsServiceName];
-	STAssertTrue([self _accounts:accounts containsAccountWithName:kSSToolkitTestsAccountName], @"Account for service");
+	XCTAssertTrue([self _accounts:accounts containsAccountWithName:kSSToolkitTestsAccountName], @"Account for service");
 	
 	// Deleting Passwords
 	[SSKeychain deletePasswordForService:kSSToolkitTestsServiceName account:kSSToolkitTestsAccountName];
 	password = [SSKeychain passwordForService:kSSToolkitTestsServiceName account:kSSToolkitTestsAccountName];
-	STAssertNil(password, @"Password deletes");
+	XCTAssertNil(password, @"Password deletes");
 }
 
 
